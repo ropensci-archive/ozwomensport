@@ -1,9 +1,17 @@
 Package: Cricket
-Version: 0.0.0.9000
-Title: What the Package Does (one line, title case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
-License: What license it uses
+Version: 0.0.1
+Title: International Cricket Data Sets
+Description: Data on all international cricket matches are provided, along with some functions to download up-to-date data from ESPNCricinfo.
+Authors@R: person("Rob", "Hyndman", , "Rob.Hyndman@monash.edu", c("aut", "cre"))
+Imports:
+  dplyr,
+  tibble,
+  xml2,
+  rvest,
+  lubridate
+Suggests:
+  ggplot2
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
