@@ -39,6 +39,8 @@ players_tab <- rvest::html_table(tabs[[2]], fill = TRUE)
 players_tab
 ```
 
+## Process the team data
+
 ```{r}
 x <- lapply(1:3, function(i) {
   p <- read_html(paste0("html_pages/team/p", i ,".html"))
@@ -54,6 +56,8 @@ colnames(team_tab)[1] <- "Club"
 write.csv(team_tab, "data/teams.csv", quote = FALSE, row.names = FALSE)
 ```
 
+## Process the player data
+
 ```{r}
 
 y <- lapply(1:3, function(i) {
@@ -68,8 +72,5 @@ players_tab <- Reduce(merge, y)
 colnames(players_tab)[1:2] <- c("Player", "Club")
 
 write.csv(players_tab, "data/players.csv", quote = FALSE, row.names = FALSE)
-
-
-
 ```
 

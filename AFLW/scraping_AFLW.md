@@ -3,6 +3,9 @@ Scraping AFLW data
 Peter Hickey
 26/10/2017
 
+-   [Process the team data](#process-the-team-data)
+-   [Process the player data](#process-the-player-data)
+
 Here's a (amazingly) simple example to get the 'default' table that is shown when you visit <http://www.afl.com.au/womens/matches/stats>. The result is returned as a *data.frame*.
 
 ``` r
@@ -1040,6 +1043,9 @@ players_tab
     ## 228          88        <NA>
     ## 229        32.5        <NA>
 
+Process the team data
+---------------------
+
 ``` r
 x <- lapply(1:3, function(i) {
   p <- read_html(paste0("html_pages/team/p", i ,".html"))
@@ -1054,6 +1060,9 @@ colnames(team_tab)[1] <- "Club"
 
 write.csv(team_tab, "data/teams.csv", quote = FALSE, row.names = FALSE)
 ```
+
+Process the player data
+-----------------------
 
 ``` r
 y <- lapply(1:3, function(i) {
