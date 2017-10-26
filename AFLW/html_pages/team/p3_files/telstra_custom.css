@@ -1,0 +1,175 @@
+div#liveForm.previewModal.ng-scope, .previewModal {
+position: relative !important;
+}
+.telstraNPS .kplNps:before {
+   font-size: 12px;
+   float: left;
+   text-align: center;
+content: "Not at all likely\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\ Extremely likely";
+}
+@media (max-width: 400px) {
+.telstraNPS div.kplNps::before {
+   font-size: 12px;
+   float: left;
+   text-align: center;
+content: "Not at all likely\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\ Extremely likely          ";
+white-space:pre;}
+
+div.kplNps {
+width:320px !important;
+}
+}
+
+.nps-square-number-0, .nps-square-number-1, .nps-square-number-2, .nps-square-number-3, .nps-square-number-4, .nps-square-number-5,
+.nps-square-number-6, .nps-square-number-7, .nps-square-number-8, .nps-square-number-9, .nps-square-number-10,
+.nps-square-number-0-off, .nps-square-number-1-off, .nps-square-number-2-off, .nps-square-number-3-off, .nps-square-number-4-off,
+.nps-square-number-5-off, .nps-square-number-6-off, .nps-square-number-7-off, .nps-square-number-8-off, .nps-square-number-9-off,
+.nps-square-number-10-off {
+  background: url("https://assets.kampyle.com/clients/nebula/telstra/nps_blue_white.png") no-repeat; }
+
+.nps-square-number-0-off {
+  background-position: 0 0; }
+
+.nps-square-number-1-off {
+  background-position: -30px 0; }
+
+.nps-square-number-2-off {
+  background-position: -60px 0; }
+
+.nps-square-number-3-off {
+  background-position: -90px 0; }
+
+.nps-square-number-4-off {
+  background-position: -120px 0; }
+
+.nps-square-number-5-off {
+  background-position: -150px 0; }
+
+.nps-square-number-6-off {
+  background-position: -180px 0; }
+
+.nps-square-number-7-off {
+  background-position: -210px 0; }
+
+.nps-square-number-8-off {
+  background-position: -240px 0; }
+
+.nps-square-number-9-off {
+  background-position: -270px 0; }
+
+.nps-square-number-10-off {
+  background-position: -300px 0; }
+
+.nps-square-number-0 {
+  background-position: 0 -31px; }
+
+.nps-square-number-1 {
+  background-position: -30px -31px; }
+
+.nps-square-number-2 {
+  background-position: -60px -31px; }
+
+.nps-square-number-3 {
+  background-position: -90px -31px; }
+
+.nps-square-number-4 {
+  background-position: -120px -31px; }
+
+.nps-square-number-5 {
+  background-position: -150px -31px; }
+
+.nps-square-number-6 {
+  background-position: -180px -31px; }
+
+.nps-square-number-7 {
+  background-position: -210px -31px; }
+
+.nps-square-number-8 {
+  background-position: -240px -31px; }
+
+.nps-square-number-9 {
+  background-position: -270px -31px; }
+
+.nps-square-number-10 {
+  background-position: -300px -31px; }
+
+.npsMobile .nps-square-number-0, .npsMobile .nps-square-number-1, .npsMobile .nps-square-number-2, .npsMobile .nps-square-number-3, .npsMobile .nps-square-number-4, .npsMobile .nps-square-number-5,
+.npsMobile .nps-square-number-6, .npsMobile .nps-square-number-7, .npsMobile .nps-square-number-8, .npsMobile .nps-square-number-9, .npsMobile .nps-square-number-10,
+.npsMobile .nps-square-number-0-off, .npsMobile .nps-square-number-1-off, .npsMobile .nps-square-number-2-off, .npsMobile .nps-square-number-3-off, .npsMobile .nps-square-number-4-off,
+.npsMobile .nps-square-number-5-off, .npsMobile .nps-square-number-6-off, .npsMobile .nps-square-number-7-off, .npsMobile .nps-square-number-8-off, .npsMobile .nps-square-number-9-off,
+.npsMobile .nps-square-number-10-off {
+  background: url("https://assets.kampyle.com/clients/nebula/telstra/telstra-nps-blue-white-mobile.png") no-repeat; }
+
+.npsMobile .nps-square-number-0-off {
+  background-position: 0 0; }
+
+.npsMobile .nps-square-number-1-off {
+  background-position: -26px 0; }
+
+.npsMobile .nps-square-number-2-off {
+  background-position: -52px 0; }
+
+.npsMobile .nps-square-number-3-off {
+  background-position: -78px 0; }
+
+.npsMobile .nps-square-number-4-off {
+  background-position: -104px 0; }
+
+.npsMobile .nps-square-number-5-off {
+  background-position: -130px 0; }
+
+.npsMobile .nps-square-number-6-off {
+  background-position: -156px 0; }
+
+.npsMobile .nps-square-number-7-off {
+  background-position: -182px 0; }
+
+.npsMobile .nps-square-number-8-off {
+  background-position: -208px 0; }
+
+.npsMobile .nps-square-number-9-off {
+  background-position: -234px 0; }
+
+.npsMobile .nps-square-number-10-off {
+  background-position: -260px 0; }
+
+.npsMobile .nps-square-number-0 {
+  background-position: 0 -26px; }
+
+.npsMobile .nps-square-number-1 {
+  background-position: -26px -26px; }
+
+.npsMobile .nps-square-number-2 {
+  background-position: -52px -26px; }
+
+.npsMobile .nps-square-number-3 {
+  background-position: -78px -26px; }
+
+.npsMobile .nps-square-number-4 {
+  background-position: -104px -26px; }
+
+.npsMobile .nps-square-number-5 {
+  background-position: -130px -26px; }
+
+.npsMobile .nps-square-number-6 {
+  background-position: -156px -26px; }
+
+.npsMobile .nps-square-number-7 {
+  background-position: -182px -26px; }
+
+.npsMobile .nps-square-number-8 {
+  background-position: -208px -26px; }
+
+.npsMobile .nps-square-number-9 {
+  background-position: -234px -26px; }
+
+.npsMobile .nps-square-number-10 {
+  background-position: -260px -26px; }
+
+label.control-label[for="NPS_numbersSquare"] {
+    /* background: black; */
+    width: 70% !important;
+}
+
+
+
