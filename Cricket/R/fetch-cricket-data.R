@@ -8,7 +8,8 @@
 #' @param view Character indicating innings or career.
 #'
 #' @examples
-
+#' wt20_bowling <- fetch_cricket_data("t20", "women", "bowling", "career")
+#' @export
 
 fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
                                sex = c("men", "women"),
@@ -77,7 +78,7 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
     else
     {
       # Make columns characters for now.
-      tab <- apply(tab, 2, as.character) %>% as_tibble()
+      tab <- tibble::as_tibble(apply(tab, 2, as.character))
 
       # Bind the data extracted from this page to all data collected so far.
       alldata <- dplyr::bind_rows(alldata, tab)
@@ -97,4 +98,3 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
   return(alldata)
 }
 
-test <- fetch_cricket_data("t20","women", "bowling", "career")
