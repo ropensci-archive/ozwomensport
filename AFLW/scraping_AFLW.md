@@ -1039,3 +1039,18 @@ players_tab
     ## 227          81        <NA>
     ## 228          88        <NA>
     ## 229        32.5        <NA>
+
+``` r
+x <- lapply(1:3, function(i) {
+  p <- read_html(paste0("html_pages/team/p", i, ".html"))
+  ptabs <- rvest::html_nodes(p, "table")
+  teams_ptab <- rvest::html_table(ptabs[[1]])
+  colnames(teams_ptab) <- paste0(colnames(teams_ptab),"_", teams_ptab[1, ])
+  teams_ptab <- teams_ptab[-1, ] 
+  teams_ptab
+})
+team_tab <- Reduce(merge, x)
+colnames(team_tab)[1] <- "Club"
+
+write.csv(team_tab, "data/teams.csv", quote = FALSE, row.names = FALSE)
+```
