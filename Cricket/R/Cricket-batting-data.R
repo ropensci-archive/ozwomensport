@@ -69,7 +69,13 @@ clean_batting_data <- function(x)
 }
 
 # Following code creates data objects
-#WTests <- Cricket:::fetch_batting_data("Test","Women")
+WTest <- Cricket:::fetch_batting_data("Test","Women")
+WODI <- Cricket:::fetch_batting_data("ODI","Women")
+WT20 <- Cricket:::fetch_batting_data("T20","Women")
+MTest <- Cricket:::fetch_batting_data("Test","Men")
+# Warning page 916. Closing unused connection???
+MODI <- Cricket:::fetch_batting_data("ODI","Men")
+MT20 <- Cricket:::fetch_batting_data("T20","Men")
 #Cricket:::clean_batting_data(WTests)
 
 
