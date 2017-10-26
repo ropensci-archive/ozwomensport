@@ -26,8 +26,6 @@ fetch_player_data <- function(playerid,
                    playerid, ".html", sep="")
   raw <- xml2::read_html(profile)
   female <- length(grep("format=women", as.character(raw))) > 0
-  # Grab relevant table
-  tab <- rvest::html_table(raw)[[4]]
 
   matchclass <- match(matchtype, c("Test","ODI","T20")) + (female * 7)
   url <- paste("http://stats.espncricinfo.com/ci/engine/player/",
