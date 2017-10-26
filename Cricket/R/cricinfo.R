@@ -1,14 +1,19 @@
 #' Fetch Player Data
 #'
-#' Fetch individual player data from all matches played
+#' Fetch individual player data from all matches played. The function will scrape
+#' the data from cricinfo and return a tibble with one line per innings for all
+#' games a player has played.
 #'
 #' @param playerid The player ID as given in Cricinfo
 #' @param matchtype Which type of cricket matches do you want? Tests, ODIs or T20s?
 #'
 #' @examples
-#' ElyssePerry <- fetch_player_data(275487,"ODI")
-#' MegLanning <- fetch_player_data(329336,"Test")
-#' SteveSmith <- fetch_player_data(267192,"T20")
+#' ElyssePerry <- fetch_player_data(275487,"T20")
+#' MegLanning <- fetch_player_data(329336,"ODI")
+#' SteveSmith <- fetch_player_data(267192,"Test")
+#' library(ggplot2)
+#' ggplot(MegLanning) + geom_point(aes(x=Date, y=Score, col=NotOut)) +
+#'   ggtitle("Meg Lanning ODI Scores")
 #'
 #' @export
 fetch_player_data <- function(playerid,
