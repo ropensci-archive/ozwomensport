@@ -31,6 +31,7 @@ fetch_batting_data <- function(matchtype=c("Test","ODI","T20"),
       # Make columns characters for now
       tab[,2:8] <- apply(tab[,2:8],2,as.character)
       alldata <- dplyr::bind_rows(alldata, tab)
+      page <- page + 1
     }
   }
 
@@ -38,17 +39,23 @@ fetch_batting_data <- function(matchtype=c("Test","ODI","T20"),
   alldata <- tibble::as_tibble(alldata[, colSums(is.na(alldata)) != NROW(alldata)])
   # Convert "-" to NA
   alldata[alldata=="-"] <- NA
+
+  return(alldata)
+}
+
+clean_batting_data <- function(x)
+{
   # Add not out column
-  notout <- seq(NROW(alldata)) %in% grep("*", alldata$Runs)
-  alldata$Runs <- gsub("*", "", alldata$Runs, fixed=TRUE)
-  dnbat <- grep("DNB", alldata$Runs)
-  alldata$Runs[dnbat] <- NA
+  notout <- seq(NROW(x)) %in% grep("*", x$Runs)
+  x$Runs <- gsub("*", "", x$Runs, fixed=TRUE)
+  dnbat <- c(grep("DNB", x$Runs), grep("absent", x$Runs))
+  x$Runs[dnbat] <- NA
 
   # Convert some columns to numeric or Date
-  alldata <- dplyr::mutate(alldata,
+  x <- dplyr::mutate(x,
     Runs = as.numeric(Runs),
-    NotOut = seq(NROW(alldata)) %in% notout,
-    DidNotBat = seq(NROW(alldata)) %in% dnbat,
+    NotOut = seq(NROW(x)) %in% notout,
+    DidNotBat = seq(NROW(x)) %in% dnbat,
     Mins = as.numeric(Mins),
     BallsFaced = as.numeric(BF),
     Fours = as.numeric(`4s`),
@@ -57,10 +64,12 @@ fetch_batting_data <- function(matchtype=c("Test","ODI","T20"),
     Innings = as.integer(Inns),
     Date = lubridate::dmy(`Start Date`))
   # Reorder columns
-  return(alldata <- alldata[,c("Date","Player","Runs","Mins","BallsFaced","Fours","Sixes",
+  return(x <- x[,c("Date","Player","Runs","Mins","BallsFaced","Fours","Sixes",
              "StrikeRate","Innings","Opposition","Ground")])
 }
 
-WTests <- fetch_batting_data("Test","Women")
+# Following code creates data objects
+#WTests <- Cricket:::fetch_batting_data("Test","Women")
+#Cricket:::clean_batting_data(WTests)
 
 
