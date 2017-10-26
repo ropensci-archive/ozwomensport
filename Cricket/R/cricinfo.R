@@ -3,49 +3,56 @@
 #' Fetch individual player data from all matches played
 #'
 #' @param playerid The player ID as given in Cricinfo
-#' @param matchtype
-
+#' @param matchtype Which type of cricket matches do you want? Tests, ODIs or T20s?
+#'
+#' @examples
+#' ElyssePerry <- fetch_player_data(275487,"ODI")
+#' MegLanning <- fetch_player_data(329336,"Test")
+#' SteveSmith <- fetch_player_data(267192,"T20")
+#'
+#' @export
 fetch_player_data <- function(playerid,
-        matchtype=c("Tests","ODI","T20"))
+        matchtype=c("Test","ODI","T20"))
 {
   matchtype <- match.arg(matchtype)
 
   # First figure out if player is female or male
   profile <- paste("http://www.espncricinfo.com/australia/content/player/",
                    playerid, ".html", sep="")
-  raw <- read_html(profile)
+  raw <- xml2::read_html(profile)
   female <- length(grep("format=women", as.character(raw))) > 0
   # Grab relevant table
-  tab <- html_table(raw)[[4]]
+  tab <- rvest::html_table(raw)[[4]]
 
-  matchclass <- match(matchtype, c("Tests","ODI","T20")) + (female * 7)
+  matchclass <- match(matchtype, c("Test","ODI","T20")) + (female * 7)
   url <- paste("http://stats.espncricinfo.com/ci/engine/player/",
                playerid,
                ".html?class=",
                matchclass,
               ";template=results;type=allround;view=innings;wrappertype=print",
                sep="")
-  raw <- read_html(url)
+  raw <- xml2::read_html(url)
   # Grab relevant table
-  tab <- html_table(raw)[[4]]
+  tab <- rvest::html_table(raw)[[4]]
   # Remove redundant missings columns
-  tab <- tab[, colSums(is.na(tab)) != NROW(tab)] %>% as_tibble
+  tab <- tibble::as_tibble(tab[, colSums(is.na(tab)) != NROW(tab)])
   # Convert "-" to NA
   tab[tab=="-"] <- NA
   # Rename columns
   colnames(tab)[10] <- "Date"
   # Add not out column
-  no <- seq(NROW(tab)) %in% grep("*",tab$Score)
-  dnb <- seq(NROW(tab)) %in% grep("DNB",tab$Score)
+  notout <- seq(NROW(tab)) %in% grep("*",tab$Score)
+  dnbat <- grep("DNB",tab$Score)
   tab$Score <- gsub("*","",tab$Score, fixed=TRUE)
-  tab$Score <- gsub("DNB","",tab$Score, fixed=TRUE)
-  dnb <- dnb | (seq(NROW(tab)) %in% grep("DNB",tab$Overs))
-  tab$Overs[tab$Overs=="DNB"] <- NA
+  tab$Score[dnbat] <- NA
+  dnbowl <- grep("DNB", tab$Overs)
+  tab$Overs[dnbowl] <- NA
   # Convert some columns to numeric or Date
-  tab <- mutate(tab,
+  tab <- dplyr::mutate(tab,
     Score = as.numeric(Score),
-    NotOut = seq(NROW(tab)) %in% no,
-    DNB = dnb,
+    NotOut = seq(NROW(tab)) %in% notout,
+    DidNotBat = seq(NROW(tab)) %in% dnbat,
+    DidNotBowl= seq(NROW(tab)) %in% dnbowl,
     Overs = as.numeric(Overs),
     Conc = as.numeric(Conc),
     Wkts = as.integer(Wkts),
@@ -55,10 +62,7 @@ fetch_player_data <- function(playerid,
   # Reorder columns
   return(
   tab[,c("Date","Opposition","Ground","Inns",
-         "Score","NotOut","DNB","Overs","Conc","Wkts","Ct","St")]
+         "Score","NotOut","DidNotBat","Overs","Conc","Wkts","DidNotBowl","Ct","St")]
   )
 }
 
-ep <- fetch_player_data(275487)
-ml <- fetch_player_data(329336)
-ss <- fetch_player_data(267192)
