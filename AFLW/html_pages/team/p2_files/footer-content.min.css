@@ -1,0 +1,22 @@
+@font-face{font-family:"Gravur";font-style:normal;font-weight:400;src:url("clientlibs/fonts/gravur.eot");src:local("Gravur"),url("clientlibs/fonts/gravur.eot?ie8hack") format("embedded-opentype"),url("clientlibs/fonts/gravur.woff") format("woff"),url("clientlibs/fonts/gravur.ttf") format("truetype"),url("clientlibs/fonts/gravur.svg") format("svg")}
+#tmx-footer-content{background-color:#fff;min-height:200px;text-align:center}
+#tmx-content{font-family:arial,helvetica,sans-serif;font-size:14px;text-align:left;overflow:auto}
+#tmx-content a,#tmx-footer-content a{text-decoration:none}
+#tmx-footer-content h1,#tmx-footer-content h1 a{font:1.31em/1.5em "gravur","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;color:#00b1eb;text-align:left;height:30px}
+#tmx-content article{width:15.2%;float:left;margin-left:1.7%}
+#tmx-content article:first-child{margin-left:0}
+#tmx-content article img{width:100%}
+#tmx-content article a h2{margin:0 0 1px;padding:0 10px;font-size:16px;line-height:25px;color:#FFF;background-color:#BBB;text-transform:uppercase}
+#tmx-content article h2.tm-blue{background-color:#00b1eb}
+#tmx-content article h2.tm-orange{background-color:#ef7d00}
+#tmx-content article h2.tm-green{background-color:#a2c73b}
+#tmx-content article h2.tm-turquoise{background-color:#00b1b2}
+#tmx-content article h2.tm-purple{background-color:#9a8ec4}
+#tmx-content article h2.tm-magenta{background-color:#e8308a}
+#tmx-content article p a{margin:8px 0;color:#333}
+.tmx-leaderboard{margin:8px auto;font:normal .625em/1.563em Arial,Helvetica,Sans-serif;color:#b0b0b0;text-transform:uppercase}
+.tmx-heading h2{font:26px "Gravur","GravurCondensed-Regular","Helvetica Neue",Arial,sans-serif,"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;color:#00b1eb;text-align:left}
+.tmx-heading h2 a{color:#00b1eb}
+@media(max-width:810px){#tmx-content article:last-child{display:none}
+#tmx-content article{width:18.5%;float:left;margin-left:1.7%}
+}

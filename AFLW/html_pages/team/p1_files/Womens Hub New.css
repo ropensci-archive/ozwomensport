@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+
+body {
+  background: #000000 url("bg-womens-hub-1x-orange.jpg") scroll center no-repeat;
+  background-position: top center;
+  background-origin: -;
+  background-position-y: -;
+  }
+
+
+.billboard {
+  margin: 0; }
+
+
+.list-item h4 a, .list-item h4 a:hover, .list-item h4 a:visited,
+.list-item.vidlist h4 a,
+.list-item.vidlist h4 a:hover,
+.list-item.vidlist h4 a:visited,
+h4.partial--finals-video__caption a,
+h4.partial--finals-video__caption a:hover,
+h4.partial--finals-video__caption a:visited {
+  color: black; }
+
+
+.section-header.bare {
+  color: #653a89;
+  border-bottom: 2px solid black; }
+
+
+.section-header.blocked {
+  background: #653a89; }
+
+
+.womens-title {
+  font-family: AntennaCondMedium; !important;
+  letter-spacing: 1px; !important;
+  padding: 10px; !important;
+  font-weight: normal; !important;
+  font-size: 2.1em;  !important;
+  color: white; !important;
+  background: #a5a5a5; !important;
+  margin-bottom: 10px; !important;
+}
+
+.partial--womens-hub-header .banner {
+  display: block;
+  padding: 0;
+  font-size: 0;
+  width: auto;
+  height: auto;
+  position: relative; }
+  /* sass/utils/vendor/_retina.scss */
+  .partial--womens-hub-header .banner:after {
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: 14.25532%; }
+  /* sass/utils/vendor/_retina.scss */
+  .partial--womens-hub-header .banner:after {
+    background-image: url("AM-4342-0616-AFLW-Leaderboard-940x135-ORANGE.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%; }
+    @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+      /* sass/utils/vendor/_retina.scss */
+      .partial--womens-hub-header .banner:after {
+        background-image: url("AM-4342-0616-AFLW-Leaderboard-1880x270-ORANGE.jpg"); } }
+
+  .partial--womens-hub-header .banner .banner__nab-logo {
+    position: absolute;
+    display: block;
+    width: 123px;
+    height: 52px;
+    right: 48px;
+    top: 30px; }
+
+  .partial--womens-hub-header .banner h1 {
+    margin-top: 0; }
+
+.partial--womens-hub-header ul.layout-nav {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 2px; }
+
+  .partial--womens-hub-header ul.layout-nav li {
+    list-style: none; }
+
+.partial--womens-hub-header .layout-nav {
+  margin-right: -2px; }
+
+  .partial--womens-hub-header .layout-nav:before, .partial--womens-hub-header .layout-nav:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden; }
+
+  .partial--womens-hub-header .layout-nav .layout-cell {
+    width: 100%;
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 2px; }
+
+.partial--womens-hub-header .layout-nav--count-1 .layout-cell {
+  width: 100%; }
+
+.partial--womens-hub-header .layout-nav--count-2 .layout-cell {
+  width: 50%; }
+
+.partial--womens-hub-header .layout-nav--count-3 .layout-cell {
+  width: 33.33333%; }
+
+.partial--womens-hub-header .layout-nav--count-4 .layout-cell {
+  width: 25%; }
+
+.partial--womens-hub-header .layout-nav--count-5 .layout-cell {
+  width: 20%; }
+
+.partial--womens-hub-header .layout-nav--count-6 .layout-cell {
+  width: 16.66667%; }
+
+.partial--womens-hub-header .layout-nav--count-7 .layout-cell {
+  width: 14.28571%; }
+
+.partial--womens-hub-header .layout-nav--count-8 .layout-cell {
+  width: 12.5%; }
+
+.partial--womens-hub-header .layout-nav--count-9 .layout-cell {
+  width: 11.11111%; }
+
+.partial--womens-hub-header .layout-nav--count-10 .layout-cell {
+  width: 10%; }
+
+.partial--womens-hub-header .layout-nav--count-11 .layout-cell {
+  width: 9.09091%; }
+
+.partial--womens-hub-header .layout-nav--count-12 .layout-cell {
+  width: 8.33333%; }
+
+.partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item {
+  color: black;
+  background-color: #a5a5a5;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5a5a5), color-stop(100%, #a5a5a5));
+  background: -webkit-linear-gradient(#a5a5a5, #a5a5a5);
+  background: -moz-linear-gradient(#a5a5a5, #a5a5a5);
+  background: -o-linear-gradient(#a5a5a5, #a5a5a5);
+  background: linear-gradient(#a5a5a5, #a5a5a5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5a5a5', endColorstr='#a5a5a5',GradientType=0 );
+  /* IE6-9 */
+  text-shadow: none; }
+  /* sass/mixins/global/_sub-navigation.scss */
+  .partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item:before {
+    display: none; }
+
+.partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item.nav-item--active,
+.partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item.nav-item--active-proto {
+  text-shadow: none;
+  color: black;
+  background: #a5a5a5;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5a5a5), color-stop(100%, #a5a5a5));
+  background: -webkit-linear-gradient(#a5a5a5, #a5a5a5);
+  background: -moz-linear-gradient(#a5a5a5, #a5a5a5);
+  background: -o-linear-gradient(#a5a5a5, #a5a5a5);
+  background: linear-gradient(#a5a5a5, #a5a5a5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5a5a5', endColorstr='#a5a5a5',GradientType=0 );
+  /* IE6-9 */ }
+  /* sass/mixins/global/_sub-navigation.scss */
+  .partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item.nav-item--active:before,
+  .partial--womens-hub-header .sub-navigation > li:hover > span > .nav-item.nav-item--active-proto:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;}
+
+.partial--womens-hub-header .sub-navigation li .nav-item {
+  display: block;
+  position: relative;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  vertical-align: middle;
+  line-height: 12px;
+  text-decoration: none !important;
+  text-align: center;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-family: AntennaCondMedium, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: black;
+  background: #efefef;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(20%, #efefef), color-stop(50%, #efefef), color-stop(80%, #efefef));
+  background: -webkit-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: -moz-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: -o-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='black', endColorstr='black',GradientType=0 );/* IE6-9 */
+  box-shadow: none;
+  text-shadow: none;
+  }
+  /* sass/mixins/global/_sub-navigation.scss */
+  .partial--womens-hub-header .sub-navigation li .nav-item:before {
+    display: none; }
+
+.partial--womens-hub-header .sub-navigation li .nav-item--active:hover,
+.partial--womens-hub-header .sub-navigation li .nav-item--active-proto:hover {
+  text-shadow: none;
+  color: black;
+  background: #653a89;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #653a89), color-stop(100%, #653a89));
+  background: -webkit-linear-gradient(#653a89, #653a89);
+  background: -moz-linear-gradient(#653a89, #653a89);
+  background: -o-linear-gradient(#653a89, #653a89);
+  background: linear-gradient(#653a89, #653a89);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#653a89', endColorstr='#653a89',GradientType=0 );}
+  
+
+.partial--womens-hub-header .sub-navigation li .nav-item--active, 
+.partial--womens-hub-header .sub-navigation li .nav-item--active-proto {
+  text-shadow: none;
+  color: white;
+  background: #653a89; }
+/* IE6-9 */
+  /* sass/mixins/global/_sub-navigation.scss */
+  .partial--womens-hub-header .sub-navigation li .nav-item--active:before, .partial--womens-hub-header .sub-navigation li .nav-item--active:hover:before,
+  .partial--womens-hub-header .sub-navigation li .nav-item--active-proto:before,
+  .partial--womens-hub-header .sub-navigation li .nav-item--active-proto:hover:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    /*
+    margin-left: - mm-image-width('images/player-ratings/player-ratings-navigation-inset.png') / 2;
+    @include image-block(
+      $url-1x: 'images/player-ratings/player-ratings-navigation-inset.png',
+      $url-2x: 'images/player-ratings/player-ratings-navigation-inset2x.png'
+    );
+    */ }
+/* line 174, themes/draft-2014/_draft-2014-desktop-and-mobile.scss */
+.partial--womens-hub-header .sub-navigation li .nav-item--disabled, .partial--womens-hub-header .sub-navigation li .nav-item--disabled:hover {
+  cursor: default;
+  color: black;
+  background-color: #efefef;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(20%, #efefef), color-stop(50%, #efefef), color-stop(80%, #efefef));
+  background: -webkit-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: -moz-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: -o-linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);
+  background: linear-gradient(left, #efefef 20%, #efefef 50%, #efefef 80%);  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='black', endColorstr='black',GradientType=0 );
+  /* IE6-9 */
+  box-shadow: none;
+  text-shadow: none; }
+  /* line 43, sass/mixins/global/_sub-navigation.scss */
+  .partial--womens-hub-header .sub-navigation li .nav-item--disabled:before, .partial--womens-hub-header .sub-navigation li .nav-item--disabled:hover:before {
+    display: none; }
+
+.partial--womens-hub-header .sub-navigation li .sub-navigation__secondary li .nav-item {
+  color: #777777;
+  text-shadow: none;
+  background: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+  filter: none; }
+
+  .partial--womens-hub-header .sub-navigation li .sub-navigation__secondary li .nav-item:hover {
+    color: #9d9d9d; }
+
+/* Hack to remove Fantasy from Womens Stats Page */
+td[title='Average Dream Team points'] {
+    display: none;
+}
+td[title='Total Dream Team points'] {
+    display: none;
+}
+th[title='Total AFL Fantasy points'] {
+  display: none;
+}
+th[title='Average AFL Fantasy points'] {
+  display: none;
+}
+th[title='AFL Fantasy Points'] {
+  display: none;
+}
