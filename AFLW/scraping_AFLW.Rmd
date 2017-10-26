@@ -1,0 +1,29 @@
+---
+title: "Scraping AFLW data"
+author: "Peter Hickey"
+date: "26/10/2017"
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here's a (amazingly) simple example to get the 'default' table that is shown 
+when you visit [http://www.afl.com.au/womens/matches/stats](http://www.afl.com.au/womens/matches/stats). The result is returned as a _data.frame_.
+
+```{r}
+library(xml2)
+library(rvest)
+
+url <- "http://www.afl.com.au/womens/matches/stats"
+aflw <- xml2::read_html(url)
+tab <- rvest::html_node(aflw, "table")
+x <- rvest::html_table(tab)
+x
+```
