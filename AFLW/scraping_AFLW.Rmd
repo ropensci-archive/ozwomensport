@@ -27,3 +27,14 @@ tab <- rvest::html_node(aflw, "table")
 x <- rvest::html_table(tab)
 x
 ```
+
+After looking more closely at the source, I realised there are in fact 2 tables
+on this page: `team-stats` and `player-stats`
+
+```{r}
+tabs <- rvest::html_nodes(aflw, "table")
+teams_tab <- rvest::html_table(tabs[[1]])
+teams_tab
+players_tab <- rvest::html_table(tabs[[2]], fill = TRUE)
+players_tab
+```
