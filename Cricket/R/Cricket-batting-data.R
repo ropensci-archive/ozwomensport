@@ -66,9 +66,6 @@ clean_batting_data <- function(x)
 
   # Tim's code -----------------------------------------------------------------
   x <- x %>% 
-    # tidyr::separate(Player, into = c("Player", "Country"), sep = "\\([a-zA-Z]") %>%
-    # tidyr::separate(Country, into = c("Country", "Sex"), sep = "\\-") %>%
-    # dplyr::select(-Sex) %>%
     dplyr::mutate(Country = stringr::str_extract(Player, "\\([a-zA-Z \\-extends]+\\)"),
                   Country = stringr::str_replace_all(Country, "\\(|\\)|-W", ""),
                   Player = stringr::str_replace(Player, "\\([a-zA-Z  \\-]+\\)", ""),
