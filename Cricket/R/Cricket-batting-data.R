@@ -29,7 +29,7 @@ fetch_batting_data <- function(matchtype=c("Test","ODI","T20"),
     else
     {
       # Make columns characters for now
-      tab[,2:8] <- apply(tab[,2:8],2,as.character)
+      tab[,2:ncol(tab)] <- apply(tab[,2:ncol(tab)],2,as.character)
       alldata <- dplyr::bind_rows(alldata, tab)
       page <- page + 1
     }
@@ -63,9 +63,29 @@ clean_batting_data <- function(x)
     StrikeRate = as.numeric(SR),
     Innings = as.integer(Inns),
     Date = lubridate::dmy(`Start Date`))
+
   # Reorder columns
-  return(x <- x[,c("Date","Player","Runs","Mins","BallsFaced","Fours","Sixes",
-             "StrikeRate","Innings","Opposition","Ground")])
+  x <- x[,c("Date","Player","Runs","Mins","BallsFaced","Fours","Sixes",
+             "StrikeRate","Innings","Opposition","Ground")]
+
+  # Tim's code -----------------------------------------------------------------
+  x <- x %>% 
+    tidyr::separate(Player, into = c("Player", "Country"), sep = "\\([a-zA-Z]") %>%
+    # tidyr::separate(Country, into = c("Country", "Sex"), sep = "\\-") %>%
+    # dplyr::select(-Sex) %>%
+    dplyr::mutate(Opposition = stringr::str_replace(Opposition, "v ", ""),
+                  Opposition = stringr::str_replace(Opposition, " Women", ""),
+                  Opposition = stringr::str_replace(Opposition, " Wmn", ""),
+                  Opposition = stringr::str_replace(Country, "Bdesh", "BD"),
+                  Opposition = stringr::str_replace(Country, "India", "IND"),
+                  Opposition = stringr::str_replace(Country, "Ire", "IRE"),
+                  Opposition = stringr::str_replace(Country, "Neth", "NL"))
+                  # Country = stringr::str_replace(Country, "-W", ""),
+                  # Country = stringr::str_replace(Country, "\\)", ""))
+
+  return(x)
+
+  # ----------------------------------------------------------------------------
 }
 
 # Following code creates data objects
