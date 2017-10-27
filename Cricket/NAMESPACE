@@ -2,3 +2,4 @@
 
 export(fetch_cricket_data)
 export(fetch_player_data)
+export(get_bowling_innings)
