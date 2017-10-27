@@ -14,7 +14,9 @@ Imports:
   lubridate,
   progress,
   rvest,
+  stringr,
   tibble,
+  tidyr,
   xml2
 Suggests:
   ggplot2

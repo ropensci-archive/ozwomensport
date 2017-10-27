@@ -41,7 +41,6 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
   while (!theend)
   {
     # Create url string.
-    # ToDo: Update url when I connect to the internet.
     # http://stats.espncricinfo.com/ci/engine/stats/index.html?class=10;page=2;template=results;type=bowling;view=innings
     # http://stats.espncricinfo.com/ci/engine/stats/index.html?class=10;page=2;template=results;type=bowling
     url <-
@@ -61,8 +60,7 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
     raw <- xml2::read_html(url)
 
     # Grab relevant table using rvest::html_table() on the raw page data.
-    # Looks like it produces a list of things or tables.
-    # ToDo: Update which element of the list it is for this dataset.
+    # Produces a list of things or tables.
     tables <- rvest::html_table(raw)
     if(page==1L)
     {
