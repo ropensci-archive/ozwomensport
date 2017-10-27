@@ -64,24 +64,22 @@ clean_batting_data <- function(x)
     Innings = as.integer(Inns),
     Date = lubridate::dmy(`Start Date`))
 
-  # Reorder columns
-  x <- x[,c("Date","Player","Runs","Mins","BallsFaced","Fours","Sixes",
-             "StrikeRate","Innings","Opposition","Ground")]
-
   # Tim's code -----------------------------------------------------------------
   x <- x %>% 
-    tidyr::separate(Player, into = c("Player", "Country"), sep = "\\([a-zA-Z]") %>%
+    # tidyr::separate(Player, into = c("Player", "Country"), sep = "\\([a-zA-Z]") %>%
     # tidyr::separate(Country, into = c("Country", "Sex"), sep = "\\-") %>%
     # dplyr::select(-Sex) %>%
-    dplyr::mutate(Opposition = stringr::str_replace(Opposition, "v ", ""),
-                  Opposition = stringr::str_replace(Opposition, " Women", ""),
-                  Opposition = stringr::str_replace(Opposition, " Wmn", ""),
-                  Opposition = stringr::str_replace(Country, "Bdesh", "BD"),
-                  Opposition = stringr::str_replace(Country, "India", "IND"),
-                  Opposition = stringr::str_replace(Country, "Ire", "IRE"),
-                  Opposition = stringr::str_replace(Country, "Neth", "NL"))
-                  # Country = stringr::str_replace(Country, "-W", ""),
-                  # Country = stringr::str_replace(Country, "\\)", ""))
+    dplyr::mutate(Country = stringr::str_extract(Player, "\\([a-zA-Z \\-extends]+\\)"),
+                  Country = stringr::str_replace_all(Country, "\\(|\\)|-W", ""),
+                  Player = stringr::str_replace(Player, "\\([a-zA-Z  \\-]+\\)", ""),
+                  Opposition = stringr::str_replace_all(Opposition, "v | Women| Wmn", ""),
+                  Opposition = stringr::str_replace(Opposition, "Bdesh", "BD"),
+                  Opposition = stringr::str_replace(Opposition, "India", "IND"),
+                  Opposition = stringr::str_replace(Opposition, "Ire", "IRE"),
+                  Opposition = stringr::str_replace(Opposition, "Neth", "NL"))
+
+  x <- x[,c("Date","Player", "Country", "Runs", "NotOut", "DidNotBat", "Mins", "BallsFaced", "Fours", "Sixes",
+             "StrikeRate","Innings","Opposition","Ground")]
 
   return(x)
 
