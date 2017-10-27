@@ -66,7 +66,7 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
     {
       maxpage <- as.numeric(strsplit(tables[[2]][1,1], "Page 1 of ")[[1]][2])
       pb <- progress::progress_bar$new(total = maxpage)
-      pb$tick()
+      pb$tick(0)
       Sys.sleep(1/1000)
     }
     tab <- tables[[3]]
