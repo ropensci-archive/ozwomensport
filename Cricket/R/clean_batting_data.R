@@ -1,8 +1,13 @@
 clean_batting_data <- function(x)
 {
-  # Add not out column
+  # Add not out and participation column
   notout <- seq(NROW(x)) %in% grep("*", x$Runs)
   x$Runs <- gsub("*", "", x$Runs, fixed=TRUE)
+  x <- dplyr::mutate(x, 
+    NotOut = seq(NROW(x)) %in% notout,
+    Participation = participation_status(x$Runs))
+
+  # Change DNB etc to NA
   absent <- grep("absent", x$Runs)
   dnbat <- grep("^DNB", x$Runs)
   tdnbat <- grep("TDNB", x$Runs)
@@ -12,12 +17,9 @@ clean_batting_data <- function(x)
   x$Runs[absent] <- NA
   x$Runs[sub] <- NA
 
-  # Convert some columns to numeric or Date
+  # Convert some columns to numeric or date
   x <- dplyr::mutate(x,
     Runs = as.numeric(Runs),
-    NotOut = seq(NROW(x)) %in% notout,
-    DidNotBat = seq(NROW(x)) %in% dnbat,
-    TeamDidNotBat = seq(NROW(x)) %in% tdnbat,
     Mins = as.numeric(Mins),
     BallsFaced = as.numeric(BF),
     Fours = as.numeric(`4s`),
@@ -35,8 +37,7 @@ clean_batting_data <- function(x)
     Country = rename_countries(Country),
     Opposition = rename_countries(Opposition))
 
-  x <- x[,c("Date","Player", "Country", "Runs", "NotOut", "DidNotBat", 
-            "TeamDidNotBat", "Mins", "BallsFaced", "Fours", "Sixes", 
+  x <- x[,c("Date","Player", "Country", "Runs", "NotOut", "Participation", "Mins", "BallsFaced", "Fours", "Sixes", 
             "StrikeRate","Innings","Opposition","Ground")]
 
   return(x)

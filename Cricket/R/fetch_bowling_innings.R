@@ -25,11 +25,22 @@ fetch_bowling_innings <- function(matchtype = c("test", "odi", "t20"),
     mutate(Date = lubridate::dmy(Date))
 
   # Move Did Not Bowl and Team Did Not Bowl into a new variable.
-  this_data$B_Status <- map_chr(this_data$Overs, b_status)
+  this_data$Participation <- map_chr(this_data$Overs, create_status)
 
-  # this_data[, c(4, 5, 7)] <- apply(this_data[, c(4, 5, 7)], 2, as.integer)
-  # this_data[, c(2, 3, 6)] <- apply(this_data[, c(2, 3, 6)], 2, as.numeric)
+  this_data <- this_data %>%
+    mutate(Overs =
+             map_chr(
+               Overs,
+               .f = function(x)
+                 if (x == "DNB" || x == "TDNB")
+                   NA
+               else
+                 x
+             ) %>% as.numeric())
 
+  this_data[, c(4, 5, 7)] <- apply(this_data[, c(4, 5, 7)], 2, as.integer)
+  this_data[, c(2, 3, 6)] <- apply(this_data[, c(2, 3, 6)], 2, as.numeric)
 
+  return(this_data)
 
 }
