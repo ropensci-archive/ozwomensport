@@ -6,7 +6,7 @@
 #' @param sex Character indicating men or women.
 #'
 #' @examples
-#' bowling_data <- get_bowling_innings("t20", "women")
+#' bowling_data <- fetch_bowling_innings("t20", "women")
 #'
 #' @export
 
@@ -24,10 +24,23 @@ fetch_bowling_innings <- function(matchtype = c("test", "odi", "t20"),
     rename(Date = `Start Date`) %>%
     mutate(Date = lubridate::dmy(Date))
 
-  # Remove after testing.
-  original_data <- this_data
+  # Move Did Not Bowl and Team Did Not Bowl into a new variable.
+  this_data$Participation <- map_chr(this_data$Overs, create_status)
+
+  this_data <- this_data %>%
+    mutate(Overs =
+             map_chr(
+               Overs,
+               .f = function(x)
+                 if (x == "DNB" || x == "TDNB")
+                   NA
+               else
+                 x
+             ) %>% as.numeric())
 
   this_data[, c(4, 5, 7)] <- apply(this_data[, c(4, 5, 7)], 2, as.integer)
   this_data[, c(2, 3, 6)] <- apply(this_data[, c(2, 3, 6)], 2, as.numeric)
+
+  return(this_data)
 
 }
