@@ -14,7 +14,8 @@
 fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
                                sex = c("men", "women"),
                                activity = c("batting", "bowling", "fielding"),
-                               view = c("innings", "career"))
+                               view = c("innings", "career"),
+                               team = NULL)
 {
   # Check arguments given by user match the type (class?) of the default
   # arguments of the function.
@@ -29,6 +30,10 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
   # Define url signifier for match type.
   matchclass <-
     match(matchtype, c("test", "odi", "t20")) + 7 * (sex == "women")
+
+  # Find country code
+  if(!is.null(team))
+    country <- match(team, c(""))
 
   # Set starting page to read from.
   page <- 1L
