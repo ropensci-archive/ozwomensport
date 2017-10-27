@@ -11,6 +11,8 @@ Authors@R: c(
   )
 Imports:
   dplyr,
+  tidyr,
+  stringr,
   tibble,
   xml2,
   rvest,
