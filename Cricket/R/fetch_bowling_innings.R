@@ -11,7 +11,7 @@
 #' @export
 
 
-get_bowling_innings <- function(matchtype = c("test", "odi", "t20"),
+fetch_bowling_innings <- function(matchtype = c("test", "odi", "t20"),
                                 sex = c("men", "women")) {
 
   # Check arguments given by user match the type (class?) of the default
