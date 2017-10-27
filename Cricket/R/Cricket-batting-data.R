@@ -29,7 +29,7 @@ fetch_batting_data <- function(matchtype=c("Test","ODI","T20"),
     else
     {
       # Make columns characters for now
-      tab[,2:8] <- apply(tab[,2:8],2,as.character)
+      tab[,2:ncol(tab)] <- apply(tab[,2:ncol(tab)],2,as.character)
       alldata <- dplyr::bind_rows(alldata, tab)
       page <- page + 1
     }

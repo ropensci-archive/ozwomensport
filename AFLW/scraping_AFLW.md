@@ -3,6 +3,9 @@ Scraping AFLW data
 Peter Hickey
 26/10/2017
 
+-   [Process the team data](#process-the-team-data)
+-   [Process the player data](#process-the-player-data)
+
 Here's a (amazingly) simple example to get the 'default' table that is shown when you visit <http://www.afl.com.au/womens/matches/stats>. The result is returned as a *data.frame*.
 
 ``` r
@@ -1040,9 +1043,12 @@ players_tab
     ## 228          88        <NA>
     ## 229        32.5        <NA>
 
+Process the team data
+---------------------
+
 ``` r
 x <- lapply(1:3, function(i) {
-  p <- read_html(paste0("html_pages/team/p", i, ".html"))
+  p <- read_html(paste0("html_pages/team/p", i ,".html"))
   ptabs <- rvest::html_nodes(p, "table")
   teams_ptab <- rvest::html_table(ptabs[[1]])
   colnames(teams_ptab) <- paste0(colnames(teams_ptab),"_", teams_ptab[1, ])
@@ -1053,4 +1059,22 @@ team_tab <- Reduce(merge, x)
 colnames(team_tab)[1] <- "Club"
 
 write.csv(team_tab, "data/teams.csv", quote = FALSE, row.names = FALSE)
+```
+
+Process the player data
+-----------------------
+
+``` r
+y <- lapply(1:3, function(i) {
+  players_ptab <- read.csv(paste0("data_raw/players_tab", i ,".csv"), check.names =      FALSE,stringsAsFactors = FALSE, quote ="", header = TRUE)
+  colnames(players_ptab) <- paste0(colnames(players_ptab),"_", players_ptab[1, ])
+  players_ptab <- players_ptab[-1, ]
+  players_ptab$Player_ <- sub("[0-9]*\\s*", "", players_ptab$Player_)
+  players_ptab
+})
+  
+players_tab <- Reduce(merge, y)
+colnames(players_tab)[1:2] <- c("Player", "Club")
+
+write.csv(players_tab, "data/players.csv", quote = FALSE, row.names = FALSE)
 ```

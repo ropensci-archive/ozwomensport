@@ -1,9 +1,23 @@
-Package: Cricket
-Version: 0.0.0.9000
-Title: What the Package Does (one line, title case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
-License: What license it uses
+Package: cricinfo
+Version: 0.0.1
+Title: Functions for Downloading Cricket Data from ESPNCricinfo
+Description: Data on all international cricket matches is provided by ESPNCricinfo.
+  This package provides some scraper functions to download the data 
+  into tibbles ready for analysis.
+Authors@R: c(
+  person("Rob", "Hyndman", , "Rob.Hyndman@monash.edu", c("aut", "cre")),
+  person("Timothy", "Hyndman", , "Timothy.Hyndman@gmail.com", "aut"),
+  person("Charles", "Gray", , "C.Gray@latrobe.edu.au", "aut")
+  )
+Imports:
+  dplyr,
+  tibble,
+  xml2,
+  rvest,
+  lubridate
+Suggests:
+  ggplot2
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
