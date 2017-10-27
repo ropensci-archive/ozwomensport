@@ -64,14 +64,15 @@ fetch_player_data <- function(playerid,
     DidNotBat = seq(NROW(tab)) %in% dnbat,
     DidNotBowl= seq(NROW(tab)) %in% dnbowl,
     Overs = as.numeric(Overs),
-    Conc = as.numeric(Conc),
+    Conc = as.integer(Conc),
     Wkts = as.integer(Wkts),
     Ct = as.integer(Ct),
     St = as.integer(St),
+    Innings = as.integer(Inns),
     Date = lubridate::dmy(Date))
   # Reorder columns
   return(
-  tab[,c("Date","Opposition","Ground","Inns",
+  tab[,c("Date","Opposition","Ground","Innings",
          "Score","NotOut","DidNotBat","Overs","Conc","Wkts","DidNotBowl","Ct","St")]
   )
 }

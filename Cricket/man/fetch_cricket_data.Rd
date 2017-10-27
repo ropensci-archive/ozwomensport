@@ -6,7 +6,7 @@
 \usage{
 fetch_cricket_data(matchtype = c("test", "odi", "t20"), sex = c("men",
   "women"), activity = c("batting", "bowling", "fielding"),
-  view = c("innings", "career"))
+  view = c("innings", "career"), team = NULL)
 }
 \arguments{
 \item{matchtype}{Character indicating test, odi, or t20.}
