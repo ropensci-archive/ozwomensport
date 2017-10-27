@@ -11,12 +11,13 @@ Authors@R: c(
   )
 Imports:
   dplyr,
-  tidyr,
+  lubridate,
+  progress,
+  rvest,
   stringr,
   tibble,
-  xml2,
-  rvest,
-  lubridate
+  tidyr,
+  xml2
 Suggests:
   ggplot2
 License: GPL-3

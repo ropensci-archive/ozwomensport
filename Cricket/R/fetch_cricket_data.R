@@ -31,20 +31,16 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
     match(matchtype, c("test", "odi", "t20")) + 7 * (sex == "women")
 
   # Set starting page to read from.
-  page <- 1
+  page <- 1L
 
   # Don't know what this variable does yet.
   alldata <- NULL
 
   # Read each page in turn and bind the rows.
-  theend <- FALSE # Initilise.
+  theend <- FALSE # Initialise.
   while (!theend)
   {
-    # ToDo: Remove counter once checked.
-    print(paste("Page = ", page)) # Counter to make sure it hasn't crashed.
-
     # Create url string.
-    # ToDo: Update url when I connect to the internet.
     # http://stats.espncricinfo.com/ci/engine/stats/index.html?class=10;page=2;template=results;type=bowling;view=innings
     # http://stats.espncricinfo.com/ci/engine/stats/index.html?class=10;page=2;template=results;type=bowling
     url <-
@@ -64,9 +60,16 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
     raw <- xml2::read_html(url)
 
     # Grab relevant table using rvest::html_table() on the raw page data.
-    # Looks like it produces a list of things or tables.
-    # ToDo: Update which element of the list it is for this dataset.
-    tab <- rvest::html_table(raw)[[3]]
+    # Produces a list of things or tables.
+    tables <- rvest::html_table(raw)
+    if(page==1L)
+    {
+      maxpage <- as.numeric(strsplit(tables[[2]][1,1], "Page 1 of ")[[1]][2])
+      pb <- progress::progress_bar$new(total = maxpage)
+      pb$tick()
+      Sys.sleep(1/1000)
+    }
+    tab <- tables[[3]]
 
     # Check to see if the dataset extracted from the page data has nothing in
     # it.
@@ -83,8 +86,12 @@ fetch_cricket_data <- function(matchtype = c("test", "odi", "t20"),
       # Bind the data extracted from this page to all data collected so far.
       alldata <- dplyr::bind_rows(alldata, tab)
 
+      # Update progress bar
+      pb$tick()
+      Sys.sleep(1/1000)
+
       # Increment page counter.
-      page <- page + 1
+      page <- page + 1L
     }
   }
 
