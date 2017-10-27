@@ -11,10 +11,11 @@ Authors@R: c(
   )
 Imports:
   dplyr,
-  tibble,
-  xml2,
+  lubridate,
+  progress,
   rvest,
-  lubridate
+  tibble,
+  xml2
 Suggests:
   ggplot2
 License: GPL-3
